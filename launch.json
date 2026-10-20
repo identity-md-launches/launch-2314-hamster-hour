@@ -1,0 +1,25 @@
+{
+  "kind": "univ4_hook",
+  "hook": {
+    "contract": "HamsterHook",
+    "constructorArgs": [
+      "$poolManager"
+    ],
+    "permissions": [
+      "beforeInitialize"
+    ]
+  },
+  "token": {
+    "contract": "HamsterToken",
+    "name": "Hamster Hour",
+    "symbol": "HAMSTER",
+    "decimals": 18
+  },
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "HamsterHook enables only beforeInitialize, authenticates the immutable PoolManager and returns the required selector. It leaves swaps, liquidity changes and donations unrestricted by the hook, with no hook fees, custom deltas or administrative controls. It accepts the specified 12500 LP fee (1.25%). HamsterToken has no constructor arguments. Deploy only HamsterToken and HamsterHook for this Ethereum token/IMD pool. The hook address must carry exactly the beforeInitialize permission bits (0x2000); deploy the hook and initialize its pool atomically. The initialPrice field records the required reference value; the deployer derives the actual opening price from the separately versioned launch policy and token address ordering. This manifest describes the contracts and pool, not deployment policy."
+}
